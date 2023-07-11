@@ -14,12 +14,12 @@ function CreateNChangeNote({route, navigation}) {
     await createPost({title: text1, contents: text2});
   }
   const onDel = async()=>{
-    navigation.popToTop();
     await deletePost({t: text1});
+    navigation.popToTop();
   }
   const onUpdate = async()=>{
-    navigation.popToTop();
     await modifyPost({t: text1, c:text2});
+    navigation.popToTop();
   }
 
     return(
