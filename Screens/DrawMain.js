@@ -15,20 +15,6 @@ function DrawMain({navigation}) {
 
 //useFocusEffect(useCallback) > '포커싱'될때마다 실행함(스마트폰 사용시:native) , useEffect >> 페이지가 변경될때마다 실행함(웹 사용시:react)
     useFocusEffect(
-        useCallback(async()=> {
-        let temp = await getPost();
-        setItems(temp);
-        return(()=>{})
-    },[]));
-
-    useEffect(()=> {
-        setlogs(Keyword === ""
-            ? items
-            : items.filter((items) => [items.title].some((text) => text.includes(Keyword))))
-    },[Keyword, items]);
-//[Keyword, items] 둘 중에 하나라도 맞으면 활성됨
-
-    useEffect(
         useCallback(()=> {
             async function get() {
                 let temp = await getPost();
@@ -37,6 +23,13 @@ function DrawMain({navigation}) {
             get();
         }, []),
     );
+
+    useEffect(()=> {
+        setlogs(Keyword === ""
+            ? items
+            : items.filter((items) => [items.title].some((text) => text.includes(Keyword))))
+    },[Keyword, items]);
+//[Keyword, items] 둘 중에 하나라도 맞으면 활성됨
       
     return(
         <View>
