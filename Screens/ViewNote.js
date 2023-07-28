@@ -18,6 +18,7 @@ function ViewNote({route, navigation}) {
             onPress={()=> navigation.navigate('CreateNChangeNote', {contents:route.params.contents, title:route.params.title})} >
               <Text style={styles.textStyle}>편집하기</Text>
           </Pressable>
+          <Text>{route.params.date}</Text>
       </View>
     
   )}

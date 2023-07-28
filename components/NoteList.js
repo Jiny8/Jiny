@@ -3,15 +3,16 @@ import { View, Text, StyleSheet, Pressable, FlatList } from "react-native";
 import DrawMain from "../Screens/DrawMain";
 import ViewNote from "../Screens/ViewNote";
 
-const NoteList = ({navigation, items}) => {
+const NoteList = ({navigation, items, setWantChoose}) => {
 
   return (
     <View>
       <FlatList
         data={items }
         renderItem={({item}) => 
-         <Pressable style={styles.container} 
-          onPress={()=> navigation.navigate("ViewNote", {title: item.title, contents: item.contents})}>
+         <Pressable style={styles.container}
+          onLongPress={()=> setWantChoose(true)}
+          onPress={()=> navigation.navigate("ViewNote", {title: item.title, contents: item.contents, date: item.date})}>
            <Text style={styles.title}>{item.title}</Text>
           </Pressable> }
         keyExtractor={item => item.idx}
