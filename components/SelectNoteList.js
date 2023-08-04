@@ -10,7 +10,6 @@ const SelectNoteList = ({navigation, items, wantChoose, setWantChoose}) => {
       await deletePost({t: deleteList[i]});
     }
     setWantChoose(false)
-    console.log("Hi~")
   }
   return (
     <View>
